@@ -4,6 +4,7 @@
   "description": "restFull API",
   "private": true,
   "scripts": {
+    "build": "yarn install",
     "start": "nodemon app.js"
   },
   "engines": {
