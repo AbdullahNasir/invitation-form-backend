@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
-const { nodeMailerCreds } = require('../config/config');
+const {
+  nodeMailerCreds
+} = require('../config/config');
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   service: 'gmail',
@@ -8,9 +10,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     ...nodeMailerCreds
   },
-  tls: {
-    rejectUnauthorized: false
-  }
+  requireTLS: true
 });
 
 const sendEmail = mailOptions => {
