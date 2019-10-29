@@ -1,17 +1,12 @@
 const nodemailer = require('nodemailer');
-const {
-  nodeMailerCreds
-} = require('../config/config');
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  service: 'gmail',
-  port: 587,
-  secure: false, // true for 465, false for other ports
-  auth: {
-    ...nodeMailerCreds
-  },
-  requireTLS: true
-});
+const nodemailerSendgrid = require('nodemailer-sendgrid');
+
+const transporter = nodemailer.createTransport(
+  nodemailerSendgrid({
+    apiKey: process.env.SENDGRID_API_KEY
+  })
+)
+
 
 const sendEmail = mailOptions => {
   return new Promise((resolve, reject) => {
